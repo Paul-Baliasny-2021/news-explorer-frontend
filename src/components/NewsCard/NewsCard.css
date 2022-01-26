@@ -1,0 +1,205 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 16px;
+    height: 576px;
+    overflow: hidden;
+    position: relative;
+    background-color: white;
+    box-shadow: 0px 5px 10px #c6c9c7;
+    transition: box-shadow 0.5s linear;
+}
+
+@media screen and (max-width: 960px) {
+    .card {
+        height: 420px;
+    }
+}
+
+.card:hover {
+    box-shadow: 0px 10px 10px #8d918f;
+}
+
+.card__image-container {
+    width: 100%;
+    height: 272px;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 960px) {
+    .card__image-container {
+        height: 224px;
+    }
+}
+
+.card__image {
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    transition: transform .9s ease-in-out;
+}
+
+.card__image-container:hover .card__image {
+    transform: scale(1.05);
+}
+
+.card__bookmark {
+    display: inline-block;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    z-index: 1;
+    top: 24px;
+    right: 24px;
+    background-image: url('../../images/mark.svg');
+    transition: background-image 0.5s linear;
+}
+
+@media screen and (max-width: 960px) {
+    .card__bookmark {
+        top: 8px;
+        right: 8px;
+    }
+}
+
+.card__bookmark:hover {
+    background-image: url('../../images/mark-hover.svg');
+    cursor: pointer;
+}
+
+.card__bookmark .card__tooltip {
+    width: 182px;
+    height: 40px;
+    position: absolute;
+    right: 50px;
+    bottom: 0;
+    top: 0;
+    background-color: white;
+    border-radius: 10px;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    text-indent: 20px;
+    margin: auto;
+    color: #000000;
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s linear;
+}
+
+.card__bookmark .card__tooltip::before {
+    content: "Sign in to save articles";
+}
+
+.card__tooltip_hidden {
+    display: none;
+}
+
+.card__bookmark:hover .card__tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+.card__bookmark_saved {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    z-index: 1;
+    top: 24px;
+    right: 24px;
+    background-image: url('../../images/mark-saved.svg');
+}
+
+@media screen and (max-width: 960px) {
+    .card__bookmark_saved {
+        top: 8px;
+        right: 8px;
+    }
+}
+
+.card__text {
+    display: flex;
+    flex-direction: column;
+    width: 88%;
+    height: 304px;
+    text-align: left;
+    margin: 20px auto 24px;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 960px) {
+    .card__text {
+        margin: 18px auto 16px;
+    }
+}
+
+.card__date {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: #B6BCBF;
+    margin: 0;
+}
+
+.card__title {
+    font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 30px;
+    margin: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+
+@media screen and (max-width: 960px) {
+    .card__title {
+        font-size: 22px;
+        line-height: 24px;
+        -webkit-line-clamp: 3;
+    }
+}
+
+.card__synopsis {
+    margin: 0;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    max-height: 110px;
+    white-space: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+}
+
+@media screen and (max-width: 960px) {
+    .card__synopsis {
+        -webkit-line-clamp: 4;
+    }
+}
+
+.card__source {
+    font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: #B6BCBF;
+    margin: 0;
+}

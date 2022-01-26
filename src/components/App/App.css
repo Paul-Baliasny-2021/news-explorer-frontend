@@ -1,0 +1,8 @@
+@import url(../../vendors/fonts.css);
+@import url(../../vendors/normalize.css);
+
+.App {
+  text-align: center;
+  max-width: 1440px;
+  margin: 0 auto;
+}

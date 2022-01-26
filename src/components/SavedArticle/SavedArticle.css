@@ -1,0 +1,79 @@
+.saved-card__delete-icon {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    z-index: 2;
+    top: 24px;
+    right: 24px;
+    background-image: url('../../images/trash-inactive.svg');
+    transition: background-image 0.5s linear;
+}
+
+@media screen and (max-width: 960px) {
+    .saved-card__delete-icon {
+        top: 8px;
+        right: 8px;
+    }
+}
+
+.saved-card__delete-icon:hover {
+    background-image: url('../../images/trash-bin.svg');
+    cursor: pointer;
+}
+
+.saved-card__delete-icon .saved-card__delete-tooltip {
+    width: 159px;
+    height: 40px;
+    position: absolute;
+    right: 50px;
+    bottom: 0;
+    top: 0;
+    background-color: white;
+    border-radius: 10px;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    text-indent: 20px;
+    margin: auto;
+    color: #000000;
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s linear;
+}
+
+.saved-card__delete-icon .saved-card__delete-tooltip::before {
+    content: "Remove from saved";
+}
+
+.saved-card__delete-icon:hover .saved-card__delete-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+.saved-card__category {
+    width: 87px;
+    height: 32px;
+    position: absolute;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    left: 24px;
+    top: 24px;
+    background-color: white;
+    border-radius: 10px;
+    padding-top: 8px;
+    text-align: center;
+}
+
+@media screen and (max-width: 960px) {
+    .saved-card__category {
+        top: 8px;
+        left: 8px;
+    }
+}
