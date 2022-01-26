@@ -1,3 +1,4 @@
+import './App.css';
 import React, { useState, useEffect } from 'react';
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import Header from '../Header/Header';
@@ -7,7 +8,6 @@ import Main from '../Main/Main';
 import Preloader from '../Preloader/Preloader';
 import SavedNews from '../SavedNews/SavedNews';
 import savedArticles from '../../utils/constants';
-import './App.css';
 import SigninPopup from '../SigninPopup/SigninPopup';
 import SignupPopup from '../SignupPopup/SignupPopup';
 import SignupSuccessPopup from '../SignupSuccessPopup/SignupSuccessPopup';

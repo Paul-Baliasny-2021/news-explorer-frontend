@@ -6,10 +6,6 @@ function NewsCard(props) {
         props.onBookmarkClick(props.cardData);
     };
 
-    // function deleteArticle() {
-    //     props.onDeleteClick(props.cardData)
-    // };
-
     return (
         <div className="card">
             <div className='card__image-container'><img src={props.imageLink} alt="News item" className='card__image' /></div>

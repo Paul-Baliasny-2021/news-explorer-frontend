@@ -5,10 +5,6 @@ import crossIcon from '../../images/close.svg';
 
 function Header(props) {
 
-    // function openMobileNavbar() {
-    //     props.onBurgerClick();
-    // };
-
     return (
         <div className="header">
             <nav className="header__nav-bar">
