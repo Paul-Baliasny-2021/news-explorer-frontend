@@ -1,15 +1,16 @@
 import '../NewsCardList/NewsCardList.css';
 import savedArticles from '../../utils/constants'
 import SavedArticle from '../SavedArticle/SavedArticle';
+import { convertDateFormat } from '../../utils/constants';
 
-function SavedNews() {
+function SavedNews(props) {
 
     function removeFromSaved() {
-        console.log('Card will be deleted at the next stage');
+        props.onDeleteClick();
     }
 
     return (
-        <div className={savedArticles.length > 0 ? "list" : "list_hidden"}>
+        <section className={savedArticles.length > 0 ? "list" : "list_hidden"}>
             <ul className="list__grid_saved">
                 {savedArticles.map((data) => (
                     <SavedArticle
@@ -17,17 +18,17 @@ function SavedNews() {
                             removeFromSaved();
                         }}
                         cardData={data}
-                        key={data._id}
-                        imageLink={data.image}
-                        date={data.date}
+                        key={(Math.random() * 1000)}
+                        imageLink={data.urlToImage}
+                        date={convertDateFormat(new Date(data.publishedAt))}
                         title={data.title}
-                        text={data.text}
-                        source={data.source}
-                        category={data.keyword}
+                        text={data.content}
+                        source={data.source.name}
+                        category={props.category}
                     />
                 ))}
             </ul>
-        </div>
+        </section>
     )
 }
 

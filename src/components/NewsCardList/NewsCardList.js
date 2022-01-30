@@ -1,37 +1,38 @@
 import React, { useState } from 'react';
 import './NewsCardList.css';
 import NewsCard from '../NewsCard/NewsCard';
-import db from '../../utils/db'
+import { convertDateFormat } from '../../utils/constants';
 
 function NewsCardList(props) {
     const [numberOfCards, setNumberOfCards] = useState(3);
 
     function showMore() {
+        // props.showMore();
         setNumberOfCards(numberOfCards + 3);
     }
-
+    
     return (
-        <div className="list">
+        <section className="list">
             <h2 className='list__title'>Search results</h2>
             <ul className="list__grid">
-                {db.slice(0, numberOfCards).map((data) => (
+                {props.articles.slice(0, numberOfCards).map((data) => 
                     <NewsCard
                         isSignedIn={props.isSignedIn}
                         onBookmarkClick={props.onBookmarkClick}
                         isSavedArticle={props.isSavedArticle}
                         cardData={data}
-                        key={data._id}
-                        imageLink={data.image}
-                        date={data.date}
+                        key={(Math.random() * 1000)}
+                        imageLink={data.urlToImage}
+                        date={convertDateFormat(new Date(data.publishedAt))}
                         title={data.title}
-                        text={data.text}
-                        source={data.source}
-                        category={data.keyword}
+                        text={data.content}
+                        source={data.source.name}
+                        articleLink={data.url}
                     />
-                ))}
+                    )}
             </ul>
             <button type='button' className='list__button' onClick={showMore}>Show more</button>
-        </div>
+        </section>
     )
 }
 

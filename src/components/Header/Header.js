@@ -1,12 +1,21 @@
+import React from 'react'
 import './Header.css';
 import { Link } from 'react-router-dom';
 import icon from '../../images/logout-white.svg';
-import crossIcon from '../../images/close.svg';
 
 function Header(props) {
 
+    function handleKeywordChange(e) {
+        props.setKeyword(e.target.value);
+    }
+
+    function handleSearchSubmit(e) {
+        e.preventDefault();
+        props.onKeywordSubmit(props.keyword)
+    }
+
     return (
-        <div className="header">
+        <header className="header">
             <nav className="header__nav-bar">
                 <h2 className="header__nav-title">NewsExplorer</h2>
                 <ul className="header__nav-items">
@@ -29,15 +38,15 @@ function Header(props) {
                     <img src={icon} alt='logout icon' className={props.isSignedIn ? 'header__mobile-logout-icon' : 'header__logout-icon_hidden'} />
                 </Link>
             </nav>
-            <div className="header__search">
+            <section className="header__search">
                 <h1 className="header__search-title">What's going on in the world?</h1>
                 <p className="header__search-subtitle">Find the latest news on any topic and save them in your personal account.</p>
-                <form className="header__search-form">
-                    <input className="header__search-input" placeholder="Enter topic" />
-                    <button type="submit" className="header__search-button" onClick={props.onSearchClick}>Search</button>
+                <form className="header__search-form" onSubmit={handleSearchSubmit}>
+                    <input className="header__search-input" placeholder="Enter topic" type='text' name='keyword' required value={props.keyword || ''} onChange={handleKeywordChange}/>
+                    <button type="submit" className="header__search-button">Search</button>
                 </form>
-            </div>
-        </div>
+            </section>
+        </header>
     )
 }
 

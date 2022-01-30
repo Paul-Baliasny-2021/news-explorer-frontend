@@ -6,14 +6,12 @@ function Main(props) {
         <div className="main">
             {props.isSearchOn &&
                 <SearchResults
-                    cards={props.cards}
-                    addToSaved={props.addToSaved}
                     showMore={props.showMore}
                     isSearchSuccessful={props.isSearchSuccessful}
                     isSignedIn={props.isSignedIn}
                     onBookmarkClick={props.onBookmarkClick}
                     isSavedArticle={props.isSavedArticle}
-                    onDeleteClick={props.onDeleteClick}
+                    articles={props.articles}
                 />}
             <About />
         </div>

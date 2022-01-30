@@ -4,9 +4,9 @@ import './Footer.css';
 
 function Footer() {
     return (
-        <div className="footer">
+        <footer className="footer">
             <p className="footer__copyright">&copy; 2022 NewsExplorer, Powered by News API</p>
-            <div className="footer__navbar">
+            <nav className="footer__navbar">
                 <div className='footer__navbar-item_words'>
                     <a href="/" className="footer__navbar-item" rel="noreferrer noopener">Home</a>
                     <a className="footer__navbar-item" href='https://practicum.yandex.com/' target='_blank' rel="noreferrer noopener">Practicum by Yandex</a>
@@ -15,8 +15,8 @@ function Footer() {
                     <a href='https://github.com/Paul-Baliasny-2021' target='_blank' rel="noreferrer noopener"><img className="footer__navbar-social" src={gh} alt='Github logo' /></a>
                     <a href='https://www.facebook.com/' target='_blank' rel="noreferrer noopener"><img className="footer__navbar-social" src={fb} alt='Facebook logo' /></a>
                 </div>
-            </div>
-        </div>
+            </nav>
+        </footer>
     )
 }
 

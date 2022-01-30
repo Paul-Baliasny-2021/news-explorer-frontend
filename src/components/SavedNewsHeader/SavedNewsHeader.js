@@ -6,7 +6,7 @@ import savedArticles from '../../utils/constants';
 
 function SavedNewsHeader(props) {
     return (
-        <div className="saved-header">
+        <header className="saved-header">
             <nav className="saved-header__nav-bar">
                 <h2 className="saved-header__nav-title">NewsExplorer</h2>
                 <ul className="saved-header__nav-items">
@@ -22,15 +22,15 @@ function SavedNewsHeader(props) {
                 <ul className="saved-header__mobile-nav-items">
                     <Link to="/" className="saved-header__mobile-navbar-item" rel="noreferrer noopener" onClick={props.onClose}>Home</Link>
                     <p className="saved-header__mobile-navbar-item" onClick={props.onClose}>Saved articles</p>
-                    <Link to="/" className="saved-header__mobile-log-button" onClick={props.onLogout} rel="noreferrer noopener">Elise <img src={logout} alt='logout icon' className='saved-header__mobile-logout-icon'/></Link>
+                    <Link to="/" className="saved-header__mobile-log-button" onClick={props.onLogClick} rel="noreferrer noopener">Elise <img src={logout} alt='logout icon' className='saved-header__mobile-logout-icon'/></Link>
                 </ul>
             </nav>
-            <div className="saved-header__info">
+            <section className="saved-header__info">
                 <h1 className="saved-header__info-title">Saved articles</h1>
                 <p className="saved-header__info-subtitle">Elise, you have {savedArticles.length} saved articles</p>
-                <p className="saved-header__info-keywords">By keywords: <span className='saved-header__info-categories'>{savedArticles.map(data => data.keyword).join(', ')}</span></p>
-            </div>
-        </div>
+                <p className="saved-header__info-keywords">By keywords: <span className='saved-header__info-categories'>{props.category}</span></p>
+            </section>
+        </header>
     )
 }
 

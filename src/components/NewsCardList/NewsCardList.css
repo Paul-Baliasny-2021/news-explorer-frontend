@@ -37,6 +37,7 @@
     row-gap: 16px;
     column-gap: 16px;
     margin: 64px 104px 64px 104px;
+    padding: 0;
 }
 
 @media screen and (max-width: 960px) {

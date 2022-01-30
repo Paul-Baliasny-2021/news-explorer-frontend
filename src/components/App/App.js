@@ -11,22 +11,48 @@ import savedArticles from '../../utils/constants';
 import SigninPopup from '../SigninPopup/SigninPopup';
 import SignupPopup from '../SignupPopup/SignupPopup';
 import SignupSuccessPopup from '../SignupSuccessPopup/SignupSuccessPopup';
+import newsApi from '../../utils/NewsAPI';
+import { convertDateFormat } from '../../utils/constants';
 
 function App() {
 
   const [isSignedIn, setIsSignedIn] = useState(true);
   const [isSavedArticle, setIsSavedArticle] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
-  const [isSearchSuccessful, setIsSearchSuccessful] = useState(true);
-  const [isSearchOn, setIsSearchOn] = useState(true);
+  const [isSearchSuccessful, setIsSearchSuccessful] = useState(false);
+  const [isSearchOn, setIsSearchOn] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
   const [isMobileNavbarOpen, setIsMobileNavbarOpen] = useState(false);
+  const [returnedArticles, setReturnedArticles] = useState([]);
+  const [keyword, setKeyword] = useState("");
+
 
   function login() {
     setIsLoginModalOpen(true)
   }
+
+  function handleSearch(searchEntry) {
+    setKeyword(searchEntry)
+    setIsSearching(true)
+    newsApi.getArticles(searchEntry)
+      .then(res => {
+        if (res.articles.length === 0) {
+          setIsSearchSuccessful(false)
+        }
+        setReturnedArticles(res.articles.map(data => data));
+      })
+      .then(setIsSearchSuccessful(true))
+      .catch(err => {
+        console.log(err)
+        setIsSearchSuccessful(false)
+      })
+      .finally(() => {
+        setIsSearching(false);
+        setIsSearchOn(true)
+      });
+  };
 
   function closeAllPopups() {
     setIsLoginModalOpen(false);
@@ -37,24 +63,24 @@ function App() {
 
   useEffect(() => {
     const closeByEscape = (e) => {
-        if (e.key === 'Escape') {
-            closeAllPopups();
-        }
+      if (e.key === 'Escape') {
+        closeAllPopups();
+      }
     }
     document.addEventListener('keydown', closeByEscape)
     return () => document.removeEventListener('keydown', closeByEscape)
-}, [])
+  }, [])
 
-useEffect(() => {
-  const closePopupOnRemoteClick = (e) => {
+  useEffect(() => {
+    const closePopupOnRemoteClick = (e) => {
       if (e.target.classList.contains("popup")) {
-          closeAllPopups();
-          e.stopPropagation();
+        closeAllPopups();
+        e.stopPropagation();
       }
-  }
-  document.addEventListener('click', closePopupOnRemoteClick)
-  return () => document.removeEventListener('click', closePopupOnRemoteClick)
-}, []);
+    }
+    document.addEventListener('click', closePopupOnRemoteClick)
+    return () => document.removeEventListener('click', closePopupOnRemoteClick)
+  }, []);
 
   function signUp() {
     setIsSignupModalOpen(true)
@@ -64,13 +90,16 @@ useEffect(() => {
     setIsSignedIn(false);
   };
 
-  function startSearch() {
-  }
-
   function addToSaved(card) {
-    savedArticles.push(card);
-    setIsSavedArticle(true);
+    isSavedArticle ? setIsSavedArticle(false) : savedArticles.push(card);
+    isSavedArticle ? setIsSavedArticle(false) : setIsSavedArticle(true);
+    console.log(savedArticles)
   };
+
+  function removeFromSaved(card) {
+    console.log(card)
+    savedArticles.filter(data => card)
+  }
 
   function openMobileNavbar() {
     setIsMobileNavbarOpen(true)
@@ -85,10 +114,12 @@ useEffect(() => {
               isSignedIn={isSignedIn}
               onLogout={handleSignOut}
               onLogin={login}
-              onSearchClick={startSearch}
               onBurgerClick={openMobileNavbar}
               isMobileNavbarOpen={isMobileNavbarOpen}
-              onClose={closeAllPopups} />
+              onClose={closeAllPopups}
+              onKeywordSubmit={handleSearch}
+              setKeyword={setKeyword}
+              keyword={keyword} />
 
             <SigninPopup
               isOpen={isLoginModalOpen}
@@ -98,6 +129,7 @@ useEffect(() => {
                 signUp();
               }
               }
+              isFormValid={true}
               onSubmit={() => {
                 setIsSignedIn(true);
                 closeAllPopups()
@@ -136,15 +168,19 @@ useEffect(() => {
               isSearchSuccessful={isSearchSuccessful}
               onBookmarkClick={addToSaved}
               isSavedArticle={isSavedArticle}
+              articles={returnedArticles}
             />
           </Route>
           <Route path='/saved-news'>
             <SavedNewsHeader
-              onLogout={handleSignOut}
+              onLogClick={handleSignOut}
               onBurgerClick={openMobileNavbar}
               isMobileNavbarOpen={isMobileNavbarOpen}
-              onClose={closeAllPopups} />
-            <SavedNews />
+              onClose={closeAllPopups} 
+              category={keyword} />
+            <SavedNews 
+            category={keyword} 
+            onDeleteClick={removeFromSaved} />
           </Route>
         </Switch>
       </BrowserRouter>

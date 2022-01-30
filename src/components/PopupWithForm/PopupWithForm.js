@@ -4,7 +4,7 @@ import './PopupWithForm.css';
 
 function PopupWithForm(props) {
     return (
-        <div className={props.isOpen ? 'popup_active popup' : `popup`}>
+        <dialog className={props.isOpen ? 'popup_active popup' : `popup`}>
             <div className="popup__window">
                 <h2 className="popup__title">{props.title}</h2>
                 <button type="button" className="popup__closer" onClick={props.onClose}><img src={crossIcon} alt="Closing cross" className="popup__x" /></button>
@@ -14,7 +14,7 @@ function PopupWithForm(props) {
                 </form>
                 <button type='button' className={props.isPopupWithForm ? 'popup__open-another' : 'popup__open-another_success'} onClick={props.onAltClick}><span className={props.isPopupWithForm ? 'popup__or' : 'popup__or_success'}>or </span>{props.altText}</button>
             </div>
-        </div>
+        </dialog>
     )
 }
 

@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: space-between;
     border-radius: 16px;
-    height: 576px;
+    height: 40vw;
     overflow: hidden;
     position: relative;
     background-color: white;
@@ -12,6 +12,12 @@
 }
 
 @media screen and (max-width: 960px) {
+    .card {
+        height: 54.7vw;
+    }
+}
+
+@media screen and (max-width: 700px) {
     .card {
         height: 420px;
     }
@@ -24,9 +30,8 @@
 .card__image-container {
     width: 100%;
     height: 272px;
-    background-size: cover;
-    background-position: center;
     overflow: hidden;
+    
 }
 
 @media screen and (max-width: 960px) {
@@ -36,6 +41,7 @@
 }
 
 .card__image {
+object-fit: cover;
     width: 100%;
     height: 100%;
     z-index: 0;
@@ -202,4 +208,9 @@
     text-transform: uppercase;
     color: #B6BCBF;
     margin: 0;
+}
+
+.card__link {
+    text-decoration: none;
+
 }

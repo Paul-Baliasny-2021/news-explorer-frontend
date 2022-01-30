@@ -3,18 +3,25 @@ import NotFoundPage from "../NotFoundPage/NotFoundPage";
 
 function SearchResults(props) {
     return (
-        <div className="search-results">
+        <section className="search-results">
             {props.isSearchSuccessful ?
-            <NewsCardList 
-            isSignedIn={props.isSignedIn} 
-            onBookmarkClick={props.onBookmarkClick} 
-            isSavedArticle={props.isSavedArticle} 
-            onDeleteClick={props.onDeleteClick}
-            />
-            :
-            <NotFoundPage />
+                <NewsCardList
+                    articles={props.articles}
+                    isSignedIn={props.isSignedIn}
+                    onBookmarkClick={props.onBookmarkClick}
+                    isSavedArticle={props.isSavedArticle}
+                    showMore={props.showMore}
+                    cardData={props.cardData}
+                    imageLink={props.imageLink}
+                    date={props.date}
+                    title={props.title}
+                    text={props.text}
+                    source={props.source}
+                />
+                :
+                <NotFoundPage />
             }
-        </div>
+        </section>
     )
 }
 
