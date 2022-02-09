@@ -16,7 +16,7 @@ function SavedArticle(props) {
                 <p className='card__date'>{props.date}</p>
                 <h2 className='card__title'>{props.title}</h2>
                 <p className='card__synopsis'>{props.text}</p>
-                <p className='card__source'>{props.source}</p>
+                <a className='card__link' href={props.articleLink} target='_blank' rel="noreferrer noopener"><p className='card__source'>{props.source}</p></a>
             </div>
         </div>
     )

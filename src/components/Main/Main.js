@@ -10,8 +10,10 @@ function Main(props) {
                     isSearchSuccessful={props.isSearchSuccessful}
                     isSignedIn={props.isSignedIn}
                     onBookmarkClick={props.onBookmarkClick}
-                    isSavedArticle={props.isSavedArticle}
+                    openSigninModal={props.openSigninModal}
+                    savedArticles={props.savedArticles}
                     articles={props.articles}
+                    isSaving={props.isSaving}
                 />}
             <About />
         </div>

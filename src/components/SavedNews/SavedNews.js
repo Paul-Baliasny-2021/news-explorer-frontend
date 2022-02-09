@@ -1,30 +1,23 @@
 import '../NewsCardList/NewsCardList.css';
-import savedArticles from '../../utils/constants'
 import SavedArticle from '../SavedArticle/SavedArticle';
-import { convertDateFormat } from '../../utils/constants';
 
 function SavedNews(props) {
 
-    function removeFromSaved() {
-        props.onDeleteClick();
-    }
-
     return (
-        <section className={savedArticles.length > 0 ? "list" : "list_hidden"}>
+        <section className={props.savedArticles.length > 0 ? "list" : "list_hidden"}>
             <ul className="list__grid_saved">
-                {savedArticles.map((data) => (
+                {props.savedArticles.map((data) => (
                     <SavedArticle
-                        onDeleteClick={() => {
-                            removeFromSaved();
-                        }}
+                        onDeleteClick={props.onDeleteClick}
                         cardData={data}
-                        key={(Math.random() * 1000)}
-                        imageLink={data.urlToImage}
-                        date={convertDateFormat(new Date(data.publishedAt))}
+                        key={data._id}
+                        imageLink={data.image}
+                        date={data.date}
                         title={data.title}
-                        text={data.content}
-                        source={data.source.name}
-                        category={props.category}
+                        text={data.text}
+                        source={data.source}
+                        articleLink={data.link}
+                        category={data.keyword}
                     />
                 ))}
             </ul>

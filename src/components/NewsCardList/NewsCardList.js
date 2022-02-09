@@ -7,7 +7,6 @@ function NewsCardList(props) {
     const [numberOfCards, setNumberOfCards] = useState(3);
 
     function showMore() {
-        // props.showMore();
         setNumberOfCards(numberOfCards + 3);
     }
     
@@ -19,9 +18,11 @@ function NewsCardList(props) {
                     <NewsCard
                         isSignedIn={props.isSignedIn}
                         onBookmarkClick={props.onBookmarkClick}
-                        isSavedArticle={props.isSavedArticle}
+                        openSigninModal={props.openSigninModal}
+                        savedArticles={props.savedArticles}
+                        isSaving={props.isSaving}
                         cardData={data}
-                        key={(Math.random() * 1000)}
+                        key={(Math.random() * (Math.random()))}
                         imageLink={data.urlToImage}
                         date={convertDateFormat(new Date(data.publishedAt))}
                         title={data.title}
@@ -31,7 +32,7 @@ function NewsCardList(props) {
                     />
                     )}
             </ul>
-            <button type='button' className='list__button' onClick={showMore}>Show more</button>
+            <button type='button' className={(numberOfCards+3) >= 100 ? 'list__button_hidden' : 'list__button'} onClick={showMore}>Show more</button>
         </section>
     )
 }

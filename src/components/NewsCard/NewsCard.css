@@ -3,12 +3,18 @@
     flex-direction: column;
     justify-content: space-between;
     border-radius: 16px;
-    height: 40vw;
+    height: 550px;
     overflow: hidden;
     position: relative;
     background-color: white;
     box-shadow: 0px 5px 10px #c6c9c7;
     transition: box-shadow 0.5s linear;
+}
+
+@media screen and (max-width: 1440px) {
+    .card {
+        height: 40vw;
+    }
 }
 
 @media screen and (max-width: 960px) {
@@ -31,7 +37,7 @@
     width: 100%;
     height: 272px;
     overflow: hidden;
-    
+    position: relative;
 }
 
 @media screen and (max-width: 960px) {
@@ -41,7 +47,7 @@
 }
 
 .card__image {
-object-fit: cover;
+    object-fit: cover;
     width: 100%;
     height: 100%;
     z-index: 0;
@@ -50,6 +56,63 @@ object-fit: cover;
 
 .card__image-container:hover .card__image {
     transform: scale(1.05);
+}
+
+.card__save-area_hidden {
+    display: none;
+}
+
+.card__save-area {
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background: #F5F6F7;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.card__loader-circle {
+    display: block;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #444;
+    border-bottom-color: #888;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    animation: spin .75s infinite linear;
+}
+
+.card__loader-text {
+    width: 90%;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    color: #B6BCBF;
+    position: absolute;
+    top: 65%;
+    left: 5%;
+}
+
+@media screen and (max-width: 960px) {
+    .card__loader-text {
+        font-size: 16px;
+        line-height: 20px;
+    }
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .card__bookmark {

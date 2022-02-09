@@ -18,6 +18,7 @@
     z-index: 10;
     opacity: 1;
     visibility: visible;
+    padding: 0;
 }
 
 .popup__window {
@@ -36,6 +37,7 @@
 @media screen and (max-width: 720px) {
     .popup__window {
         width: 100%;
+        margin: auto;
     }
 }
 
@@ -53,6 +55,25 @@
 
 @media screen and (max-width: 720px) {
     .popup__title {
+        margin-left: 5vw;
+    }
+}
+
+.popup__title_type_fail {
+    width: 73.25%;
+    color: red;
+    text-align: left;
+    margin-top: 43px;
+    margin-left: 36px;
+    margin-bottom: 22px;
+    font-family: 'Roboto';
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+@media screen and (max-width: 720px) {
+    .popup__title_type_fail {
         margin-left: 5vw;
     }
 }
