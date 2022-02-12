@@ -68,7 +68,7 @@ function App() {
     mainApi.getSavedArticles()
       .then(res => {
         setSavedArticles(res.data);
-        setSavedArticlesCategoryList([...new Set(res.data.map(data => data.keyword).sort())])
+        setSavedArticlesCategoryList([...new Set(res.data.map(data => data.keyword))].sort())
         // console.log([...new Set(res.data.map(data => data.title + " " + data._id))])
       })
       .catch(err => {
@@ -190,7 +190,7 @@ function App() {
       .then(res => {
         // console.log(res.data)
         setSavedArticles(res.data);
-        setSavedArticlesCategoryList([...new Set(res.data.map(data => data.keyword))]);
+        setSavedArticlesCategoryList([...new Set(res.data.map(data => data.keyword))].sort());
       })
       .catch(err => {
         console.log(`Server returned this error: ${err.status}`)
@@ -202,7 +202,7 @@ function App() {
       .then((res) => {
         // console.log(res)
         setSavedArticles(savedArticles.filter((item) => item._id !== card._id));
-        setSavedArticlesCategoryList([...new Set(savedArticles.map(data => data.keyword).sort())])
+        setSavedArticlesCategoryList([...new Set(res.data.map(data => data.keyword))].sort())
       })
       .catch(err => {
         console.log("Server returned this error:", err)
