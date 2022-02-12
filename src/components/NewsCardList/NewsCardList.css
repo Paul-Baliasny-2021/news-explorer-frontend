@@ -104,6 +104,10 @@
     transition: background-color .3s linear;
 }
 
+.list__button_hidden {
+    display: none;
+}
+
 @media screen and (max-width: 960px) {
     .list__button {
         width: 240px;

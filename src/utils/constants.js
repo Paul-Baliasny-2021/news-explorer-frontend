@@ -1,8 +1,5 @@
-const savedArticles = [];
-export default savedArticles;
-
-export const createFetchTemplate = (url) =>
-    fetch(url)
+export const createFetchTemplate = (url, headers) =>
+    fetch(url, headers)
         .then(res => res.ok ? res.json() : Promise.reject(`Error: ${res.status}`))
         .catch(err => console.log(err));
 
@@ -43,4 +40,13 @@ export const convertDateFormat = (date) => {
     if (date.getMonth() === 11) {
         return `December ${date.getDate()}, ${date.getFullYear()}`;
     }
+}
+
+export function getWeekAgoDate(today){
+    const lastweek = new Date(today.getFullYear(), today.getMonth(), today.getDate()-7);
+    return lastweek.toISOString().split('T')[0]; 
+}
+
+export function normalizeString(keyword){
+    return keyword[0].toUpperCase() + keyword.slice(1).toLowerCase();
 }

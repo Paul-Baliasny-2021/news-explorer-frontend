@@ -9,7 +9,9 @@ function SearchResults(props) {
                     articles={props.articles}
                     isSignedIn={props.isSignedIn}
                     onBookmarkClick={props.onBookmarkClick}
-                    isSavedArticle={props.isSavedArticle}
+                    openSigninModal={props.openSigninModal}
+                    savedArticles={props.savedArticles}
+                    isSaving={props.isSaving}
                     showMore={props.showMore}
                     cardData={props.cardData}
                     imageLink={props.imageLink}

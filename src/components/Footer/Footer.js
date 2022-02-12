@@ -5,7 +5,7 @@ import './Footer.css';
 function Footer() {
     return (
         <footer className="footer">
-            <p className="footer__copyright">&copy; 2022 NewsExplorer, Powered by News API</p>
+            <p className="footer__copyright">&copy; 2022 Paul Baliasny, powered by News API</p>
             <nav className="footer__navbar">
                 <div className='footer__navbar-item_words'>
                     <a href="/" className="footer__navbar-item" rel="noreferrer noopener">Home</a>
